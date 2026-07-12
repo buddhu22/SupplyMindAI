@@ -1,0 +1,10 @@
+# Data
+data/*.csv
+data/processed/*.csv
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+
+# Python caches
+__pycache__/
+*.pyc
