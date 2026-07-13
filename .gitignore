@@ -8,3 +8,6 @@ data/processed/*.csv
 # Python caches
 __pycache__/
 *.pyc
+
+# Models
+models/*.pkl

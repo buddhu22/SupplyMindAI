@@ -70,11 +70,11 @@ def encode_features(df: pd.DataFrame, target_col: str, ordinal_cols: list, nomin
     auto_cat_cols = df_encoded.select_dtypes(include=['object', 'category']).columns.tolist()
     logger.info(f"Automatically identified categorical columns: {auto_cat_cols}")
     
-    # Add any unidentified categorical columns to nominal_cols for One-Hot Encoding by default
+    # Add any unidentified categorical columns to ordinal_cols for Label Encoding by default to save memory
     for col in auto_cat_cols:
         if col not in ordinal_cols and col not in nominal_cols:
-            logger.warning(f"Column '{col}' is categorical but not specified as ordinal or nominal. Defaulting to One-Hot Encoding.")
-            nominal_cols.append(col)
+            logger.warning(f"Column '{col}' is categorical but not specified as ordinal or nominal. Defaulting to Label Encoding.")
+            ordinal_cols.append(col)
     
     # 2. Label Encoding for Ordinal features
     label_encoder = LabelEncoder()
